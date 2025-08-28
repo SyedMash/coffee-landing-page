@@ -5,6 +5,8 @@ import FlavourSection from "@/components/FlavourSection";
 import Smooth from "@/components/Smooth";
 import NutritionSection from "@/components/NutritionSection";
 import BenefitSection from "@/components/BenefitSection";
+import TestimonialSection from "@/components/TestimonialSection";
+import FooterSection from "@/components/FooterSection";
 
 const Page = () => {
   return (
@@ -15,8 +17,11 @@ const Page = () => {
         <MessageSection />
         <FlavourSection />
         <NutritionSection />
-        <BenefitSection />
-        <div className="h-dvh"></div>
+        <div>
+          <BenefitSection />
+          <TestimonialSection />
+        </div>
+        <FooterSection />
       </Smooth>
     </main>
   );

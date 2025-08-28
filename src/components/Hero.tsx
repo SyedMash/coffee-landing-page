@@ -5,10 +5,19 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useMediaQuery } from "react-responsive";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const Hero = () => {
+  const isMobile = useMediaQuery({
+    query: "(max-width: 768px)",
+  });
+
+  const isTablet = useMediaQuery({
+    query: "(max-width: 1024px)",
+  });
+
   useGSAP(() => {
     const titleSplit = SplitText.create(".hero-title", {
       type: "chars",
@@ -62,12 +71,30 @@ const Hero = () => {
   return (
     <section className="bg-main-bg">
       <div className="hero-container">
-        <img
-          src={"/images/static-img.png"}
-          alt="hero-img"
-          aria-label="hero-img"
-          className="absolute bottom-0 left-1/2 -translate-x-1/2  object-auto scale-100 md:scale-150"
-        />
+        {isTablet ? (
+          <>
+            {isMobile && (
+              <img
+                src="/images/hero-bg.png"
+                alt="hero-bg"
+                className="absolute bottom-40 size-full object-cover"
+              />
+            )}
+            <img
+              src="/images/hero-img.png"
+              alt="hero-img-table"
+              className="absolute bottom-0 left-1/2 -translate-x-1/2 object-auto"
+            />
+          </>
+        ) : (
+          <video
+            src={"/videos/hero-bg.mp4"}
+            autoPlay
+            playsInline
+            muted
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        )}
         <div className="hero-content opacity-0">
           <div className="overflow-hidden">
             <h1 className="hero-title">Freaking Delicious</h1>
@@ -83,7 +110,7 @@ const Hero = () => {
             </div>
           </div>
 
-          <h2>
+          <h2 className="font-sans">
             Live life to the fuller with SPYLT: Shatter boredom and embrace your
             inner kid with every deliciously smooth chug
           </h2>

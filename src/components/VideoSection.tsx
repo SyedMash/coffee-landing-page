@@ -13,7 +13,7 @@ const VideoSection = () => {
   const isMobile = useMediaQuery({
     query: "(max-width: 768px)",
   });
-1
+  1;
   useGSAP(
     () => {
       if (!isMobile) {
@@ -23,7 +23,6 @@ const VideoSection = () => {
             start: "-15% top",
             end: "200% top",
             scrub: 1.5,
-            markers: true,
             pin: true,
           },
         });
